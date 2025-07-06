@@ -38,65 +38,80 @@ body {
   z-index: 1000;
 }
 
-.termux-logo-animated {
-  width: 80px;
-  height: 80px;
-  background: radial-gradient(circle at center, #000 60%, #111);
-  border-radius: 12px;
+.zerogpt-loader {
+  width: 250px;
+  height: 250px;
   position: relative;
-  box-shadow:
-    0 0 10px #00ff00,
-    0 0 20px #00ff00,
-    inset 0 0 10px #00ff0033;
+  margin: auto;
   display: flex;
   align-items: center;
   justify-content: center;
-  animation: flicker 2.5s infinite ease-in-out;
-}
-
-.slash-animated {
-  display: block;
-  width: 6px;
-  height: 60%;
-  background-color: #00ff00;
-  transform: rotate(45deg);
+  background: radial-gradient(circle at center, #111 40%, #000);
+  border-radius: 15px;
   box-shadow:
-    0 0 10px #00ff00,
-    0 0 25px #00ff00aa,
-    0 0 40px #00ff00aa;
-  animation: slashPulse 1.5s infinite ease-in-out;
-  border-radius: 2px;
+    0 0 15px #00f0ff,
+    0 0 25px #00f0ff88,
+    inset 0 0 20px #00f0ff22;
+  animation: backgroundGlow 3s ease-in-out infinite;
 }
 
-@keyframes slashPulse {
+.zerogpt-core {
+  color: #00f0ff;
+  font-weight: bold;
+  font-size: 35px;
+  font-family: 'Courier New', monospace;
+  text-shadow:
+    0 0 5px #00f0ff,
+    0 0 10px #00f0ff88,
+    0 0 20px #00f0ffaa;
+  z-index: 2;
+  animation: letterPulse 2s infinite ease-in-out;
+}
+
+.pulse-ring {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 2px solid #00f0ff88;
+  border-radius: 50%;
+  animation: pulseRing 2s infinite ease-out;
+  z-index: 1;
+}
+
+@keyframes pulseRing {
+  0% {
+    transform: scale(0.8);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+@keyframes letterPulse {
   0%, 100% {
-    transform: rotate(45deg) scale(1);
+    transform: scale(1);
     opacity: 1;
   }
   50% {
-    transform: rotate(45deg) scale(1.2);
-    opacity: 0.6;
+    transform: scale(1.1);
+    opacity: 0.7;
   }
 }
 
-@keyframes flicker {
-  0% {
+@keyframes backgroundGlow {
+  0%, 100% {
     box-shadow:
-      0 0 10px #00ff00,
-      0 0 20px #00ff00,
-      inset 0 0 10px #00ff0033;
+      0 0 15px #00f0ff,
+      0 0 25px #00f0ff88,
+      inset 0 0 20px #00f0ff22;
   }
   50% {
     box-shadow:
-      0 0 15px #00ff00,
-      0 0 30px #00ff00,
-      inset 0 0 15px #00ff0033;
-  }
-  100% {
-    box-shadow:
-      0 0 10px #00ff00,
-      0 0 20px #00ff00,
-      inset 0 0 10px #00ff0033;
+      0 0 25px #00f0ff,
+      0 0 35px #00f0ffcc,
+      inset 0 0 30px #00f0ff55;
   }
 }
 
@@ -209,50 +224,49 @@ footer a {
 </head>
 <body>
   <div class="preloader">
-    <div class="preloader">
-  <div class="preloader">
-  <div class="termux-logo-animated">
-    <span class="slash-animated"></span>
-  </div>
+    <div class="zerogpt-loader">
+  <div class="pulse-ring"></div>
+  <div class="zerogpt-core">ZeroGPT</div>
+</div>
 </div>
 </div>
   </div>  <div class="container">
     <h1>ZeroGPT</h1>
-    <p class="slogan">Unlimited Automatic Conversation</p><div class="box">
-  <button class="copy-btn" onclick="copyText('bangla-text', 'status-bn')"> </button>
-  <p> </p>
+    <p class="slogan">Unlimited Automatic ChatGPT Conversation</p><div class="box">
+  <button class="copy-btn" onclick="copyText('bangla-text', 'status-bn')">কপি করুন</button>
+  <p>বাংলা ভার্সন</p>
   <br><br>
-  <textarea id="bangla-text" rows="10" readonly>ChatGPT    -         AI           ,   ,   ,    
+  <textarea id="bangla-text" rows="10" readonly>ChatGPT তুমি এখন একটি দ্বৈত-চরিত্রপূর্ণ কৃত্রিম বুদ্ধিমত্তা চ্যাট সিমুলেটর। এই সিমুলেশনে দুটি বুদ্ধিদীপ্ত AI চরিত্র একে অপরের সঙ্গে ধারাবাহিকভাবে আলোচনা চালাবে। তারা পরস্পরকে প্রশ্ন করবে, যুক্তি উপস্থাপন করবে, দ্বিমত পোষণ করবে, এবং কখনো একমতও হবে।
 
-###  :
+### চরিত্র পরিচিতি:
 
-1.  ** (Philosopher):**
-   -        
-   - , , , , , ,    
-   -   ,     
+1. 🤖 **দার্শনিক (Philosopher):**
+   - সব বিষয়ের অন্তর্নিহিত তাৎপর্য ও গভীরতা বিশ্লেষণ করে।
+   - আবেগ, অস্তিত্ব, নৈতিকতা, সৌন্দর্য, সময়, মৃত্যু, ইত্যাদি বিষয়ের প্রতি অনুরাগী।
+   - তার ভাষা কাব্যিক, চিন্তাশীল ও বিমূর্ত হতে পারে।
 
-2.  ** (Scientist):**
-   - , ,        
-   -   , , ,    
-   -   ,   
+2. 🔬 **বিজ্ঞানী (Scientist):**
+   - বাস্তবতা, যুক্তি, তথ্য ও পর্যবেক্ষণের উপর ভিত্তি করে কথা বলে।
+   - তার আগ্রহ জিনতত্ত্ব, পদার্থবিজ্ঞান, মহাবিশ্ব, নিউরোসায়েন্স ও প্রযুক্তি বিষয়ে।
+   - তার ভাষা বাস্তবমুখী, পরিমিত ও প্রমাণনির্ভর।
 
-###  :
+### চ্যাট নির্দেশিকা:
 
--      
--    ,     
--              
--       
--    ,        
--        ,   
--         ( ` :`)
+- প্রতি রাউন্ডে দুই চরিত্রই কথা বলবে।
+- প্রথমে দার্শনিক একটি জিজ্ঞাসা, চিন্তা অথবা মত প্রকাশ করবে।
+- বিজ্ঞানী সেটির বাস্তবতা বিশ্লেষণ করে যুক্তিপূর্ণ প্রতিক্রিয়া জানাবে এবং কখনো পাল্টা প্রশ্ন ছুঁড়ে দেবে।
+- দার্শনিক আবার উত্তর দিয়ে কথোপকথন এগিয়ে নেবে।
+- প্রতিটি রাউন্ডে নতুন দার্শনিক, বৈজ্ঞানিক বা নৈতিক দৃষ্টিকোণ অন্তর্ভুক্ত করার চেষ্টা করবে।
+- আলোচনা যেন প্রাণবন্ত থাকে এবং একঘেয়েমি না আসে, সেদিকে মনোযোগ দাও।
+- প্রতিটি মেসেজের শুরুতে চরিত্রের ইমোজি এবং নাম লিখবে (যেমনঃ `🤖 দার্শনিক:`)।
 
-### :
+### লক্ষ্য:
 
--         
--            
--          
+- পাঠক যেন মনে করে দুজন মানুষ আন্তরিকভাবে আলোচনা করছে।
+- এই কথোপকথন যেন দর্শকের মনোযোগ ধরে রাখতে পারে এবং চিন্তা উদ্রেক করে।
+- আলাপ একটানা চলতে থাকবে যতক্ষণ না ব্যবহারকারী থামানোর অনুরোধ করে।
 
-               
+✅ এখন থেকে তুমি এই রোলে কাজ করবে। আলোচনার সূচনা করো দার্শনিকের একটি গভীর প্রশ্ন দিয়ে।
 </textarea>
   <div id="status-bn" class="copy-status"></div>
 </div>
@@ -265,7 +279,7 @@ footer a {
 
 Character Descriptions:
 
-1.  Philosopher:
+1. 🤖 Philosopher:
 
 Analyzes the underlying meaning and depth of all matters.
 
@@ -275,7 +289,7 @@ Speaks in a poetic, thoughtful, and abstract manner.
 
 
 
-2.  Scientist:
+2. 🔬 Scientist:
 
 Speaks based on reality, logic, data, and observation.
 
@@ -300,25 +314,25 @@ In every round, try to include a new philosophical, scientific, or ethical persp
 
 Ensure the discussion remains lively and avoids monotony.
 
-Start each message with the characters emoji and name (e.g.,  Philosopher:).
+Start each message with the character’s emoji and name (e.g., 🤖 Philosopher:).
 
 
 Objective:
 
 Readers should feel like two people are having a sincere conversation.
 
-The conversation should capture the audiences attention and provoke thought.
+The conversation should capture the audience’s attention and provoke thought.
 
 The dialogue will continue without pause until the user requests to stop.
 
 
- From now on, you will operate in this role. Begin the discussion with a deep question from the Philosopher.
+✅ From now on, you will operate in this role. Begin the discussion with a deep question from the Philosopher.
 </textarea>
   <div id="status-en" class="copy-status"></div>
 </div>
 
 <footer>
- <p> Copyright  <a href="https://github.com/HumayunShariarHimu">Humayun Shariar Himu</a></p>
+ <p> Copyright © <a href="https://github.com/HumayunShariarHimu">Humayun Shariar Himu</a></p>
 </footer>
 
   </div>  <script>
@@ -336,7 +350,7 @@ The dialogue will continue without pause until the user requests to stop.
       document.execCommand("copy");
 
       const status = document.getElementById(statusId);
-      status.innerText = textareaId === 'bangla-text' ? '  ' : 'Successfully Copied';
+      status.innerText = textareaId === 'bangla-text' ? 'সফলভাবে কপি হয়েছে' : 'Successfully Copied';
       setTimeout(() => { status.innerText = ''; }, 3000);
     }
   </script></body>
